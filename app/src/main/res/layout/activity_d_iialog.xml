@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".demo.DialogActivity">
+
+    <Button
+        android:id="@+id/common"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="基础对话框" />
+
+
+    <Button
+        android:id="@+id/picDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="图片对话框" />
+
+
+    <Button
+        android:id="@+id/divDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义布局对话框" />
+
+    <Button
+        android:id="@+id/sysDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="系统对话框" />
+
+</LinearLayout>

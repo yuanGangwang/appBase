@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension"/>
+        <attr name="civ_border_color" format="color"/>
+        <attr name="civ_border_overlay" format="boolean"/>
+        <attr name="civ_fill_color" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="settingItem">
+        //是否显示分割线
+        <attr name="hasDivider" format="boolean" />
+        //分割线颜色
+        <attr name="dividerColor" format="color" />
+        //左侧icon
+        <attr name="iconRes" format="reference" />
+        //中间提示icon
+        <attr name="tipsImgRes" format="reference" />
+
+        //title内容
+        <attr name="titleText" format="string" />
+        <attr name="titleColor" format="color" />
+        <attr name="titleSize" format="dimension" />
+
+        //描述内容
+        <attr name="desText" format="string" />
+        <attr name="desColor" format="color" />
+        <attr name="desSize" format="dimension" />
+
+        //右侧图片
+        <attr name="nextImg" format="reference" />
+        <attr name="nextText" format="string" />
+
+        <attr name="switchThumb" format="reference" />
+        <attr name="switchTrack" format="reference" />
+        <attr name="switchKey" format="string" />
+        <attr name="switchDefault" format="boolean" />
+
+        <attr name="type">
+            <enum name="version" value="0" />
+            <enum name="choice" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="settingGroup">
+        //是否显示分组数据
+        <attr name="groupShowEnable" format="boolean" />
+        //内容展示
+        <attr name="groupText" format="string" />
+        <attr name="groupTxtColor" format="color" />
+        <attr name="groupTxtSize" format="dimension" />
+        //是否支持收起分组
+        <attr name="collapseEnable" format="boolean" />
+        <attr name="iconResource" format="reference" />
+
+        //分组收起切换图片资源
+        <attr name="collapseUpRes" format="reference" />
+        <attr name="collapseDownRes" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="LimitLayout">
+        <!--最大宽度-->
+        <attr name="ml_maxWidth" format="dimension" />
+        <!--最大高度-->
+        <attr name="ml_maxheight" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="naviga">
+        <!--标题-->
+        <attr name="naviTitle" format="string" />
+        <!--标题颜色-->
+        <attr name="naviTitleColor" format="color" />
+        <attr name="naviTitleSize" format="dimension" />
+
+        <!--导航背景颜色-->
+        <attr name="naviBackGround" format="color"/>
+
+        <!--是否覆盖状态栏-->
+        <attr name="isCoverStatus"  format="boolean"/>
+        <!--状态栏颜色-->
+        <attr name="naviStatusColor" format="color" />
+
+        <!--返回图片-->
+        <attr name="naviBackImg" format="reference" />
+        <!--返回文字-->
+        <attr name="naviBackText" format="string" />
+        <attr name="naviBackColor" format="color"/>
+
+        <attr name="searchIcon" format="reference"/>
+        <attr name="menuIcon" format="reference"/>
+
+        <!--是否显示分割线图片-->
+        <attr name="hasNaviDivider" format="boolean" />
+        <!--分割线颜色-->
+        <attr name="naviDividerColor" format="color" />
+
+    </declare-styleable>
+
+</resources>

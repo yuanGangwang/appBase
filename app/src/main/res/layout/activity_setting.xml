@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".demo.SettingActivity">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="下列元素资源支持替换" />
+
+    <com.example.appbase.setting.SettingItem
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        app:desText="用户基本信息设置"
+        app:dividerColor="@color/colorAccent"
+        app:hasDivider="true"
+        app:iconRes="@mipmap/ic_shop_dialog_close"
+        app:tipsImgRes="@mipmap/ic_shop_dialog_close"
+        app:titleText="用户中心" />
+
+
+    <com.example.appbase.setting.SettingItem
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:dividerColor="@color/colorPrimary"
+        app:hasDivider="true"
+        app:iconRes="@mipmap/ic_shop_dialog_close"
+        app:switchDefault="false"
+        app:titleColor="@color/colorPrimary"
+        app:titleText="版本管理"
+        app:type="version" />
+
+    <com.example.appbase.setting.SettingItem
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:hasDivider="false"
+        app:switchDefault="true"
+        app:switchKey="notify"
+        app:titleColor="@color/colorPrimary"
+        app:titleText="通知权限"
+        app:type="choice" />
+
+    <com.example.appbase.setting.SettingGroup
+        android:id="@+id/settingGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:collapseDownRes="@mipmap/ic_setting_uncollapse"
+        app:collapseUpRes="@mipmap/ic_setting_collapse"
+        app:groupShowEnable="true"
+        app:groupText="菜单组管理(支持折叠)"
+        app:iconResource="@mipmap/ic_setting_uncollapse">
+
+        <com.example.appbase.setting.SettingItem
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:desText="用户基本信息设置"
+            app:dividerColor="@color/colorAccent"
+            app:hasDivider="true"
+            app:iconRes="@mipmap/ic_shop_dialog_close"
+            app:titleText="用户中心" />
+
+        <com.example.appbase.setting.SettingItem
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:desText="用户基本信息设置"
+            app:dividerColor="@color/colorAccent"
+            app:hasDivider="true"
+            app:iconRes="@mipmap/ic_shop_dialog_close"
+            app:titleText="用户中心" />
+
+    </com.example.appbase.setting.SettingGroup>
+
+
+</LinearLayout>

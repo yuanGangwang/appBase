@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".demo.NaviActivity">
+
+    <com.example.appbase.naviga.NavigaView
+        android:id="@+id/backNavi"
+        android:layout_width="match_parent"
+        app:naviTitle="支持沉浸设置的导航栏"
+        app:isCoverStatus="true"
+        app:naviStatusColor="#78ef00"
+        android:layout_height="wrap_content" />
+
+
+    <com.example.appbase.naviga.NavigaView
+        android:layout_width="match_parent"
+        app:naviTitle="基础标题栏"
+        android:layout_height="40dp" />
+
+    <com.example.appbase.naviga.NavigaView
+        android:layout_width="match_parent"
+        app:naviTitle="自定义背景/图片/文字颜色"
+        app:naviBackGround="@color/colorPrimary"
+        app:naviTitleColor="@color/colorWhite"
+        app:naviBackImg="@mipmap/ic_launcher"
+        android:layout_height="40dp" />
+
+    <com.example.appbase.naviga.NavigaView
+        android:layout_width="match_parent"
+        app:hasNaviDivider="true"
+        app:naviDividerColor="@color/colorPrimary"
+        app:naviTitle="标题栏分割线颜色"
+        android:layout_height="40dp" />
+
+    <com.example.appbase.naviga.NavigaView
+        android:layout_width="match_parent"
+        app:naviTitle="标题栏"
+        app:naviBackColor="@color/colorPrimary"
+        app:naviBackText="Back"
+        android:layout_height="40dp" />
+
+    <com.example.appbase.naviga.NavigaView
+        android:layout_width="match_parent"
+        app:naviTitle="按钮支持"
+        android:id="@+id/iconBar"
+        app:naviBackColor="@color/colorPrimary"
+        app:naviBackText="Back"
+        app:searchIcon="@mipmap/ic_launcher"
+        app:menuIcon="@mipmap/ic_setting_uncollapse"
+        android:layout_height="40dp" />
+
+</LinearLayout>
