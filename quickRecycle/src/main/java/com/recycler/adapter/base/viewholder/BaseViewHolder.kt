@@ -28,11 +28,14 @@ open class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
      *
      * @return B?
      */
-    @Deprecated("Please use BaseDataBindingHolder class", ReplaceWith("DataBindingUtil.getBinding(itemView)", "androidx.databinding.DataBindingUtil"))
+    @Deprecated(
+        "Please use BaseDataBindingHolder class",
+        ReplaceWith("DataBindingUtil.getBinding(itemView)", "androidx.databinding.DataBindingUtil")
+    )
     open fun <B : ViewDataBinding> getBinding(): B? = DataBindingUtil.getBinding(itemView)
 
 
-    fun <T : View> getView(@IdRes viewId: Int): T {
+    open fun <T : View> getView(@IdRes viewId: Int): T {
         val view = getViewOrNull<T>(viewId)
         checkNotNull(view) { "No view found with id $viewId" }
         return view
@@ -94,7 +97,10 @@ open class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         return this
     }
 
-    open fun setBackgroundResource(@IdRes viewId: Int, @DrawableRes backgroundRes: Int): BaseViewHolder {
+    open fun setBackgroundResource(
+        @IdRes viewId: Int,
+        @DrawableRes backgroundRes: Int
+    ): BaseViewHolder {
         getView<View>(viewId).setBackgroundResource(backgroundRes)
         return this
     }
@@ -113,9 +119,18 @@ open class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     open fun setEnabled(@IdRes viewId: Int, isEnabled: Boolean): BaseViewHolder {
         getView<View>(viewId).isEnabled = isEnabled
+
         return this
     }
 
+    open operator fun invoke(block: () -> Unit) {
+        block()
+    }
+    
+
+    fun view(id: Int, block: View.() -> Unit) {
+        block(getView<View>(id))
+    }
 
 }
 

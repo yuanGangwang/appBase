@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".demo.BannerActivity"></activity>
+        <activity
+            android:name=".demo.SearchActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".demo.BannerActivity" />
         <activity android:name=".demo.ListActivity" />
         <activity
             android:name=".demo.NaviActivity"

@@ -6,6 +6,11 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     defaultConfig {
         applicationId "com.example.appbase"
         minSdkVersion 16
@@ -37,4 +42,5 @@ dependencies {
     implementation project(path: ':common')
     implementation project(path: ':net')
     implementation project(path: ':quickRecycle')
+    implementation project(path: ':banner')
 }

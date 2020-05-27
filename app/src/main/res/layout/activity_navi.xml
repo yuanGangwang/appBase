@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".demo.NaviActivity">
 
-    <com.example.appbase.naviga.NavigaView
+    <dev.common.weight.naviga.NavigaView
         android:id="@+id/backNavi"
         android:layout_width="match_parent"
         app:naviTitle="支持沉浸设置的导航栏"
@@ -16,12 +16,12 @@
         android:layout_height="wrap_content" />
 
 
-    <com.example.appbase.naviga.NavigaView
+    <dev.common.weight.naviga.NavigaView
         android:layout_width="match_parent"
         app:naviTitle="基础标题栏"
         android:layout_height="40dp" />
 
-    <com.example.appbase.naviga.NavigaView
+    <dev.common.weight.naviga.NavigaView
         android:layout_width="match_parent"
         app:naviTitle="自定义背景/图片/文字颜色"
         app:naviBackGround="@color/colorPrimary"
@@ -29,21 +29,21 @@
         app:naviBackImg="@mipmap/ic_launcher"
         android:layout_height="40dp" />
 
-    <com.example.appbase.naviga.NavigaView
+    <dev.common.weight.naviga.NavigaView
         android:layout_width="match_parent"
         app:hasNaviDivider="true"
         app:naviDividerColor="@color/colorPrimary"
         app:naviTitle="标题栏分割线颜色"
         android:layout_height="40dp" />
 
-    <com.example.appbase.naviga.NavigaView
+    <dev.common.weight.naviga.NavigaView
         android:layout_width="match_parent"
         app:naviTitle="标题栏"
         app:naviBackColor="@color/colorPrimary"
         app:naviBackText="Back"
         android:layout_height="40dp" />
 
-    <com.example.appbase.naviga.NavigaView
+    <dev.common.weight.naviga.NavigaView
         android:layout_width="match_parent"
         app:naviTitle="按钮支持"
         android:id="@+id/iconBar"

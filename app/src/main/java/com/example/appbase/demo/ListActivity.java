@@ -6,6 +6,7 @@ import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +20,10 @@ import com.recycler.adapter.base.BaseMultiItemQuickAdapter;
 import com.recycler.adapter.base.BaseQuickAdapter;
 import com.recycler.adapter.base.entity.MultiItemEntity;
 import com.recycler.adapter.base.listener.OnItemSwipeListener;
+import com.recycler.adapter.base.listener.OnLoadMoreListener;
+import com.recycler.adapter.base.loadmore.BaseLoadMoreView;
 import com.recycler.adapter.base.module.DraggableModule;
+import com.recycler.adapter.base.module.LoadMoreModule;
 import com.recycler.adapter.base.viewholder.BaseViewHolder;
 
 import org.jetbrains.annotations.NotNull;
@@ -70,9 +74,53 @@ public class ListActivity extends AppCompatActivity {
                 setHeader();
             }
         });
+        findViewById(R.id.loadMore).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setLoadMoreAdapter();
+            }
+        });
 
         recyclerView = ((RecyclerView) findViewById(R.id.listView));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void setLoadMoreAdapter() {
+        ArrayList<String> data = new ArrayList<>();
+        addData(data);
+        LoadMoreAdapter loadMoreAdapter = new LoadMoreAdapter(data);
+        loadMoreAdapter.getLoadMoreModule().setLoadMoreView(new CustomLoadMoreView());
+        loadMoreAdapter.getLoadMoreModule().setAutoLoadMore(true);
+        loadMoreAdapter.getLoadMoreModule().setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore() {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(800);
+                            addData(data);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    loadMoreAdapter.getLoadMoreModule().loadMoreComplete();
+
+                                }
+                            });
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+            }
+        });
+        recyclerView.setAdapter(loadMoreAdapter);
+    }
+
+    private void addData(ArrayList<String> data) {
+        for (int i = 0; i < 20; i++) {
+            data.add("1");
+        }
     }
 
     private void setHeader() {
@@ -243,5 +291,54 @@ public class ListActivity extends AppCompatActivity {
 //            ((Button) holder.getView(R.id.txt)).setText(holder.getLayoutPosition() + "");
         }
     }
+
+    public class LoadMoreAdapter extends BaseQuickAdapter<String, BaseViewHolder> implements LoadMoreModule {
+
+
+        public LoadMoreAdapter(@Nullable List<String> data) {
+            super(R.layout.setting_item_layout, data);
+        }
+
+        @Override
+        protected void convert(@NotNull BaseViewHolder holder, String item) {
+//            ((Button) holder.getView(R.id.txt)).setText(holder.getLayoutPosition() + "");
+        }
+    }
+
+
+    class CustomLoadMoreView extends BaseLoadMoreView {
+
+        @NotNull
+        @Override
+        public View getRootView(@NotNull ViewGroup parent) {
+            return LayoutInflater.from(parent.getContext()).inflate(R.layout.loading_layout, parent, false);
+        }
+
+        @NotNull
+        @Override
+        public View getLoadingView(@NotNull BaseViewHolder holder) {
+            return holder.findView(R.id.load_more_loading_view);
+        }
+
+        @NotNull
+        @Override
+        public View getLoadComplete(@NotNull BaseViewHolder holder) {
+            return holder.findView(R.id.load_more_load_complete_view);
+        }
+
+        @NotNull
+        @Override
+        public View getLoadEndView(@NotNull BaseViewHolder holder) {
+            return holder.findView(R.id.load_more_load_end_view);
+        }
+
+        @NotNull
+        @Override
+        public View getLoadFailView(@NotNull BaseViewHolder holder) {
+            return holder.findView(R.id.load_more_load_fail_view);
+        }
+
+    }
+
 
 }

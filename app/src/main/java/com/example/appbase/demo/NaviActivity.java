@@ -5,10 +5,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.dev.common.utils.StatusBarUtils;
-import com.dev.common.utils.ToastUtil;
 import com.example.appbase.R;
-import com.example.appbase.naviga.NavigaView;
+
+import dev.common.utils.StatusBarUtils;
+import dev.common.utils.ToastUtil;
+import dev.common.weight.naviga.NavigaView;
 
 public class NaviActivity extends AppCompatActivity {
 

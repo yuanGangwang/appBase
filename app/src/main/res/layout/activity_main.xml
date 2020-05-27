@@ -20,7 +20,6 @@
         android:text="Setting" />
 
 
-
     <Button
         android:id="@+id/navi"
         android:layout_width="match_parent"
@@ -33,4 +32,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="列表" />
+
+
+    <Button
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Banner" />
+
+    <Button
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="search" />
 </LinearLayout>

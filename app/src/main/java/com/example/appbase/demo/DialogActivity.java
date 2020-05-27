@@ -15,13 +15,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.appbase.R;
 import com.recycler.adapter.base.BaseQuickAdapter;
 import com.recycler.adapter.base.viewholder.BaseViewHolder;
-import com.example.appbase.dialog.BaseDialog;
-import com.example.appbase.dialog.BaseDialogController;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+
+import dev.common.weight.dialog.BaseDialog;
+import dev.common.weight.dialog.BaseDialogController;
 
 public class DialogActivity extends AppCompatActivity {
 

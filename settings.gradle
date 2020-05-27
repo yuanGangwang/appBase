@@ -1,7 +1,8 @@
 rootProject.name='appBase'
 include ':app'
-include ':net'
-include ':common'
+include ':banner'
 include ':bottomTab'
+include ':common'
+include ':net'
 include ':quickRecycle'
 
