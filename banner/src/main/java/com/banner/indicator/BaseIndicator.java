@@ -1,4 +1,4 @@
-package com.youth.banner.indicator;
+package com.banner.indicator;
 
 import android.content.Context;
 import android.graphics.Paint;
@@ -11,7 +11,7 @@ import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.youth.banner.config.IndicatorConfig;
+import com.banner.config.IndicatorConfig;
 
 public class BaseIndicator extends View implements Indicator {
     protected IndicatorConfig config;

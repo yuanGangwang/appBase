@@ -1,4 +1,4 @@
-package com.youth.banner;
+package com.banner.weight;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -25,14 +25,15 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.youth.banner.adapter.BannerAdapter;
-import com.youth.banner.config.BannerConfig;
-import com.youth.banner.config.IndicatorConfig;
-import com.youth.banner.indicator.Indicator;
-import com.youth.banner.listener.OnBannerListener;
-import com.youth.banner.listener.OnPageChangeListener;
-import com.youth.banner.util.BannerUtils;
-import com.youth.banner.util.ScrollSpeedManger;
+import com.banner.R;
+import com.banner.adapter.BannerAdapter;
+import com.banner.config.BannerConfig;
+import com.banner.config.IndicatorConfig;
+import com.banner.indicator.Indicator;
+import com.banner.listener.OnBannerListener;
+import com.banner.listener.OnPageChangeListener;
+import com.banner.util.BannerUtils;
+import com.banner.util.ScrollSpeedManger;
 
 import java.lang.annotation.Retention;
 import java.lang.ref.WeakReference;

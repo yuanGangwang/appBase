@@ -8,7 +8,7 @@
     tools:context=".demo.BannerActivity">
 
 
-    <com.youth.banner.Banner
+    <com.banner.weight.Banner
         android:id="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="180dp"

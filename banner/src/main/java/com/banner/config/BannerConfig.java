@@ -1,6 +1,6 @@
-package com.youth.banner.config;
+package com.banner.config;
 
-import com.youth.banner.util.BannerUtils;
+import com.banner.util.BannerUtils;
 
 public class BannerConfig {
     public static final boolean IS_AUTO_LOOP = true;

@@ -16,8 +16,8 @@
 #   public *;
 #}
 
--dontwarn com.youth.banner.**
--keep class com.youth.banner.** {*;}
+-dontwarn com.banner.**
+-keep class com.banner.** {*;}
 
 -dontwarn androidx.viewpager2.**
 -keep androidx.viewpager2.** {*;}

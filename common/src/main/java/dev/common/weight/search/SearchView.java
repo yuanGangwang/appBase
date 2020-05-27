@@ -15,7 +15,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -95,11 +94,8 @@ public class SearchView extends FrameLayout {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((actionId == 0 || actionId == 3) && event != null) {
                     if (searChKeyClickListener != null) {
+                        hideKeyBoard();
                         searChKeyClickListener.onSearch(searchEt.getText().toString());
-                        if (mContext instanceof Activity) {
-                            KeyboardUtil.mayHideKeyboard((Activity) mContext);
-
-                        }
                     }
                 }
                 return false;
@@ -110,6 +106,7 @@ public class SearchView extends FrameLayout {
             @Override
             public void onClick(View v) {
                 if (searChKeyClickListener!=null){
+                    hideKeyBoard();
                     searChKeyClickListener.onLeftClick();
                 }
             }
@@ -119,11 +116,19 @@ public class SearchView extends FrameLayout {
             @Override
             public void onClick(View v) {
                 if (searChKeyClickListener!=null){
+                    hideKeyBoard();
                     searChKeyClickListener.onRightClick(searchEt.getText().toString());
                 }
+
             }
         });
         addView(view);
+    }
+
+    private void hideKeyBoard() {
+        if (mContext instanceof Activity) {
+            KeyboardUtil.mayHideKeyboard((Activity) mContext);
+        }
     }
 
     private void initView(AttributeSet attrs, int defStyleAttr) {

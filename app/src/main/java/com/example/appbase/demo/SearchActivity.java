@@ -1,9 +1,9 @@
 package com.example.appbase.demo;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appbase.R;
 import com.recycler.adapter.base.BaseQuickAdapter;
@@ -26,13 +26,26 @@ public class SearchActivity extends AppCompatActivity {
         searchView.setSearChKeyClickListener(new SearchView.OnSearChKeyClickListener() {
             @Override
             public void onSearch(String search) {
-                Toast.makeText(SearchActivity.this, search+"", Toast.LENGTH_SHORT).show();
+                /*软键盘的搜索按键*/
+                Toast.makeText(SearchActivity.this, search + "", Toast.LENGTH_SHORT).show();
                 setAdapter();
             }
 
             @Override
             public void onTextChange(String search) {
+                /*搜索框内容变化监听*/
+            }
 
+            @Override
+            public void onLeftClick() {
+                /*返回按键*/
+                finish();
+            }
+
+            @Override
+            public void onRightClick(String search) {
+                /*搜索按键*/
+                setAdapter();
             }
         });
 
@@ -61,7 +74,6 @@ public class SearchActivity extends AppCompatActivity {
         @Override
         protected void convert(@NotNull BaseViewHolder helper, @NotNull String item) {
             helper.setText(R.id.navTitle, "position = " + helper.getLayoutPosition());
-
         }
     }
 }

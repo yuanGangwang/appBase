@@ -1,4 +1,4 @@
-package com.youth.banner.adapter;
+package com.banner.adapter;
 
 import android.view.ViewGroup;
 

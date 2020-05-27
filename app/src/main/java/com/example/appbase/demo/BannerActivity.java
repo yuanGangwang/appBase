@@ -3,15 +3,17 @@ package com.example.appbase.demo;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appbase.R;
-import com.youth.banner.Banner;
-import com.youth.banner.adapter.BannerAdapter;
-import com.youth.banner.config.IndicatorConfig;
-import com.youth.banner.indicator.CircleIndicator;
-import com.youth.banner.util.BannerUtils;
+import com.banner.weight.Banner;
+import com.banner.adapter.BannerAdapter;
+import com.banner.config.IndicatorConfig;
+import com.banner.indicator.CircleIndicator;
+import com.banner.listener.OnBannerListener;
+import com.banner.util.BannerUtils;
 
 import java.util.List;
 
@@ -26,11 +28,18 @@ public class BannerActivity extends AppCompatActivity {
 
         banner = ((Banner) findViewById(R.id.banner));
         ImageAdapter adapter = new ImageAdapter(DataBean.getTestData());
-        banner.setAdapter(adapter);
-        banner.isAutoLoop(true);
-
-        banner.setIndicator(new CircleIndicator(this));
-        banner.setIndicatorGravity(IndicatorConfig.Direction.LEFT);
+        banner.setAdapter(adapter)
+                .isAutoLoop(true)
+                .setDelayTime(3000)
+                .setIndicator(new CircleIndicator(this))
+                .setIndicatorGravity(IndicatorConfig.Direction.LEFT)
+                .setOnBannerListener(new OnBannerListener() {
+                    @Override
+                    public void OnBannerClick(Object data, int position) {
+                        Toast.makeText(BannerActivity.this, position + "", Toast.LENGTH_SHORT).show();
+                    }
+                })
+        ;
         banner.setBannerRound(BannerUtils.dp2px(5));
     }
 

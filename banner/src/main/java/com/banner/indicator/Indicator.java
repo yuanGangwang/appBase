@@ -1,11 +1,11 @@
-package com.youth.banner.indicator;
+package com.banner.indicator;
 
 import android.view.View;
 
 import androidx.annotation.NonNull;
 
-import com.youth.banner.config.IndicatorConfig;
-import com.youth.banner.listener.OnPageChangeListener;
+import com.banner.config.IndicatorConfig;
+import com.banner.listener.OnPageChangeListener;
 
 public interface Indicator extends OnPageChangeListener {
     @NonNull

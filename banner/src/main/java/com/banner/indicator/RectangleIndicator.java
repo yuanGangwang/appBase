@@ -1,4 +1,4 @@
-package com.youth.banner.indicator;
+package com.banner.indicator;
 
 import android.content.Context;
 import android.graphics.Canvas;

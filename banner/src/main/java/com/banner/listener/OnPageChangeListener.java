@@ -1,4 +1,4 @@
-package com.youth.banner.listener;
+package com.banner.listener;
 
 import androidx.annotation.Px;
 import androidx.viewpager2.widget.ViewPager2;

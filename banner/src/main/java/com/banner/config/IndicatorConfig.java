@@ -1,4 +1,4 @@
-package com.youth.banner.config;
+package com.banner.config;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.IntDef;
