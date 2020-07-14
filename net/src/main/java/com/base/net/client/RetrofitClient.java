@@ -62,7 +62,7 @@ public class RetrofitClient {
         mContext = context;
     }
 
-    public Retrofit initRetrofit() {
+    public void initRetrofit() {
 
         if (TextUtils.isEmpty(baseUrl)) {
             throw new RuntimeException("服务器地址为空");
@@ -101,17 +101,16 @@ public class RetrofitClient {
                 .writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
                 .connectionPool(new ConnectionPool(8, 15, TimeUnit.SECONDS))
                 .build();
-        return  new Retrofit.Builder()
+            retrofit =   new Retrofit.Builder()
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(baseUrl)
                 .build();
 
-
     }
 
-    public <T> T create(final Class<T> service) {
+    public static  <T> T create(final Class<T> service) {
         if (service == null) {
             throw new RuntimeException("Api service is null!");
         }

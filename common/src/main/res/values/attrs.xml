@@ -72,6 +72,7 @@
         <!--标题颜色-->
         <attr name="naviTitleColor" format="color" />
         <attr name="naviTitleSize" format="dimension" />
+        <attr name="naviFontFamily" format="string" />
 
         <!--导航背景颜色-->
         <attr name="naviBackGround" format="color"/>

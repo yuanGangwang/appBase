@@ -2,6 +2,24 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 //apply plugin: 'kotlin-kapt'
+apply plugin: 'maven'
+
+
+//uploadArchives {
+//    repositories.mavenDeployer {
+//        repository(url: "http://nexus.tttinner.com:8888/nexus/content/repositories/releases/") {
+//            authentication(
+//                    userName: "yuangang.wang",
+//                    password: "Abu0ln9vrD91e0m"
+//            )
+//        }
+//
+//        pom.groupId = "com.app.base"
+//        pom.artifactId = "recyclerview"
+//        pom.version = "1.0.0"
+//
+//    }
+//}
 
 android {
     compileSdkVersion 28
@@ -19,9 +37,6 @@ android {
         debug {
             consumerProguardFiles 'proguard-rules.pro'
         }
-    }
-    compileOptions {
-        kotlinOptions.freeCompilerArgs += ['-module-name', "com.github.CymChad.brvah"]
     }
 
     lintOptions {

@@ -46,6 +46,7 @@
     <dev.common.weight.naviga.NavigaView
         android:layout_width="match_parent"
         app:naviTitle="按钮支持"
+        app:naviFontFamily="sans-serif-black"
         android:id="@+id/iconBar"
         app:naviBackColor="@color/colorPrimary"
         app:naviBackText="Back"

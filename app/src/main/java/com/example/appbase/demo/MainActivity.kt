@@ -69,11 +69,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun start() {
 
-        var apiService = RetrofitClient.getInstance("http://121.43.186.223:8300", this)
-            .initRetrofit()
-            .create(ApiService::class.java)
+      RetrofitClient.getInstance("http://121.43.186.223:8300", this).initRetrofit()
 
-        RxUtils.wrapRestCall(apiService.sendOlderPhoneAddress)
+        RxUtils.wrapRestCall(RetrofitClient.create(ApiService::class.java).sendOlderPhoneAddress)
             .subscribe(Consumer<String> {
                 Log.e("As", "success")
             }, Consumer {

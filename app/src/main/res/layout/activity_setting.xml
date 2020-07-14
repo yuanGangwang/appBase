@@ -67,8 +67,8 @@
 
         <dev.common.weight.setting.SettingItem
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            app:desText="用户基本信息设置"
+            android:background="@color/colorPrimary"
+            android:layout_height="40dp"
             app:dividerColor="@color/colorAccent"
             app:hasDivider="true"
             app:iconRes="@mipmap/ic_shop_dialog_close"

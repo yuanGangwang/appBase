@@ -377,7 +377,6 @@ public class Banner<T, BA extends BannerAdapter> extends FrameLayout {
 
     public Indicator getIndicator() {
         if (mIndicator == null) {
-            Log.e(TAG, getContext().getString(R.string.indicator_null_error));
         }
         return mIndicator;
     }

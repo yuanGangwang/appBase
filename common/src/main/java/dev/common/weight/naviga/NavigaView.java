@@ -2,6 +2,7 @@ package dev.common.weight.naviga;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -95,7 +96,9 @@ public class NavigaView extends FrameLayout {
 
 
             view.findViewById(R.id.naviLayout).setBackgroundColor(naviBackGroundColor);
-
+            if (!TextUtils.isEmpty(a.getString(R.styleable.naviga_naviFontFamily))){
+                title.setTypeface(Typeface.create(a.getString(R.styleable.naviga_naviFontFamily), Typeface.NORMAL));
+            }
             if (searchIcon != 0) {
                 navSearch.setImageResource(searchIcon);
             } else {

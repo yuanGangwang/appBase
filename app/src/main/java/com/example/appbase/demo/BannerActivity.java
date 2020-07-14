@@ -77,7 +77,6 @@ public class BannerActivity extends AppCompatActivity {
         public void onBindView(ImageHolder holder, DataBean data, int position, int size) {
             holder.imageView.setImageResource(data.imageRes);
         }
-
     }
 
 }
