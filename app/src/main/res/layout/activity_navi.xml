@@ -13,13 +13,12 @@
         app:naviTitle="支持沉浸设置的导航栏"
         app:isCoverStatus="true"
         app:naviStatusColor="#78ef00"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="44dp" />
 
     <dev.common.weight.naviga.NavigaView
         android:layout_width="match_parent"
         app:naviTitle="基础标题栏"
-        android:layout_height="40dp" />
+        android:layout_height="44dp" />
 
     <dev.common.weight.naviga.NavigaView
         android:layout_width="match_parent"

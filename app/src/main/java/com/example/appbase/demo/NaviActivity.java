@@ -21,12 +21,17 @@ public class NaviActivity extends AppCompatActivity {
 
         ((NavigaView) findViewById(R.id.backNavi)).setOnBackClickListener(new NavigaView.OnApplyNaviListener() {
             @Override
-            public void onBackImgClick() {
+            public void onBackLayoutClick() {
                 finish();
             }
 
             @Override
             public void onApplyTitle(TextView title) {
+
+            }
+
+            @Override
+            public void onRightLayoutClick() {
 
             }
         });

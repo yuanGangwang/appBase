@@ -145,7 +145,7 @@ public class SearchView extends FrameLayout {
 
             searchTxt = a.getString(R.styleable.searchView_searchString);
             searchColor = a.getColor(R.styleable.searchView_searchColor, ContextCompat.getColor(mContext, R.color.colorBlack_17));
-            searchSize = a.getDimension(R.styleable.naviga_naviTitleSize, 16);
+//            searchSize = a.getDimension(R.styleable.naviga_naviTitleSize, 16);
 
 
             searchBackImg.setImageResource(backImg);

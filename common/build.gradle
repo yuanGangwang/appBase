@@ -14,7 +14,7 @@ uploadArchives {
 
         pom.groupId = "com.app.base"
         pom.artifactId = "utils"
-        pom.version = "1.0.1"
+        pom.version = "1.0.3"
 
     }
 }

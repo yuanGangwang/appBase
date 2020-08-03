@@ -66,27 +66,39 @@
         <attr name="ml_maxheight" format="dimension" />
     </declare-styleable>
 
-    <declare-styleable name="naviga">
-        <!--标题-->
-        <attr name="naviTitle" format="string" />
-        <!--标题颜色-->
-        <attr name="naviTitleColor" format="color" />
-        <attr name="naviTitleSize" format="dimension" />
-        <attr name="naviFontFamily" format="string" />
+    <declare-styleable name="NavigaView">
 
         <!--导航背景颜色-->
         <attr name="naviBackGround" format="color"/>
-
         <!--是否覆盖状态栏-->
         <attr name="isCoverStatus"  format="boolean"/>
         <!--状态栏颜色-->
         <attr name="naviStatusColor" format="color" />
+
+        <!--标题-->
+        <attr name="naviTitle" format="string" />
+        <!--标题颜色-->
+        <attr name="naviTitleColor" format="color" />
+        <!--标题字体大小-->
+        <attr name="naviTitleSize" format="dimension" />
+        <!--标题字体设置-->
+        <attr name="naviFontFamily" format="string" />
+
+        <!--右侧标题-->
+        <attr name="naviRightTitle" format="string" />
+        <!--右侧标题颜色-->
+        <attr name="naviRightTitleColor" format="color" />
+        <!--右侧标题字体大小-->
+        <attr name="naviRightTitleSize" format="dimension" />
+        <!--右侧标题字体设置-->
+        <attr name="naviRightFontFamily" format="string" />
 
         <!--返回图片-->
         <attr name="naviBackImg" format="reference" />
         <!--返回文字-->
         <attr name="naviBackText" format="string" />
         <attr name="naviBackColor" format="color"/>
+
 
         <attr name="searchIcon" format="reference"/>
         <attr name="menuIcon" format="reference"/>
