@@ -1,7 +1,7 @@
-package com.base.net.http;
+package com.base.net.exception;
 
 import android.net.ParseException;
-import android.util.Log;
+import android.os.Build;
 
 import com.google.gson.JsonParseException;
 import com.google.gson.stream.MalformedJsonException;
@@ -14,16 +14,10 @@ import java.net.ConnectException;
 import retrofit2.HttpException;
 
 
-public class ExceptionHandle {
+public class ExceptionHandle implements IExceptionHandle {
 
-    private static final int UNAUTHORIZED = 401;
-    private static final int FORBIDDEN = 403;
-    private static final int NOT_FOUND = 404;
-    private static final int REQUEST_TIMEOUT = 408;
-    private static final int INTERNAL_SERVER_ERROR = 500;
-    private static final int SERVICE_UNAVAILABLE = 503;
-
-    public static ResponseThrowable handleException(Throwable e) {
+    @Override
+    public ResponseThrowable handleException(Throwable e) {
         e.printStackTrace();
         ResponseThrowable ex;
         if (e instanceof HttpException) {
@@ -49,7 +43,7 @@ public class ExceptionHandle {
                     ex.message = "服务器不可用";
                     break;
                 default:
-                    ex.message = "网络错误";
+                    ex.message = "Check your network connections";
                     break;
             }
             return ex;

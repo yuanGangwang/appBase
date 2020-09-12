@@ -5,76 +5,45 @@ package com.base.net.http;
  */
 public class BaseResponse<T> {
 
-    public String retMsg;
-    public T retData;
-    public String retCode;
+    public String msg;
+    public T data;
+    public String code;
 
-    public String getRetCode() {
-        return retCode;
+    public String getCode() {
+        return code;
     }
 
-    public void setRetCode(String retCode) {
-        this.retCode = retCode;
+    public void setCode(String code) {
+        this.code = code;
     }
 
 
-    public String getRetMsg() {
-        return retMsg;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setRetMsg(String retMsg) {
-        this.retMsg = retMsg;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
-    public T getRetData() {
-        return retData;
+    public T getData() {
+        return data;
     }
 
-    public void setRetData(T retData) {
-        this.retData = retData;
+    public void setData(T data) {
+        this.data = data;
     }
 
-        public boolean isOk() {
-        return "200".equals(retCode);
+    public boolean isOk() {
+        return "0".equals(code);
     }
 
     @Override
     public String toString() {
         return "LzyResponse{\n" +//
-                "\tretMsg='" + retMsg + "\'\n" +//
-                "\tretData=" + retData + "\n" +//
+                "\tretMsg='" + msg + "\'\n" +//
+                "\tretData=" + data + "\n" +//
                 '}';
     }
 
-//    private String code;
-//    private String message;
-//    private T result;
-//
-//    public String getCode() {
-//        return code;
-//    }
-//
-//    public void setCode(String code) {
-//        this.code = code;
-//    }
-//
-//    public T getResult() {
-//        return result;
-//    }
-//
-//    public void setResult(T result) {
-//        this.result = result;
-//    }
-//
-//    public boolean isOk() {
-//        return "200".equals(code);
-//    }
-//
-//    public String getMessage() {
-//        return message;
-//    }
-//
-//    public void setMessage(String message) {
-//        this.message = message;
-//    }
 }

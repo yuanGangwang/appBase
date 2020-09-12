@@ -145,9 +145,6 @@ public class NavigaView extends FrameLayout {
             title.setText(titleTxt);
             title.setTextColor(titleColor);
             title.setTextSize(titleSize);
-            if (listener != null) {
-                listener.onApplyTitle(title);
-            }
 
             if (TextUtils.isEmpty(backTxt)) {
                 navBackText.setVisibility(GONE);
@@ -189,24 +186,35 @@ public class NavigaView extends FrameLayout {
         }
     }
 
+    boolean isMeasure = false;
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        if (isCoverStatus) {
-            ViewGroup.LayoutParams layoutParams = statusView.getLayoutParams();
-            int statusbarHeight = QMUIStatusBarHelper.getStatusbarHeight(mContext);
-            layoutParams.height = statusbarHeight;
-            statusView.setLayoutParams(layoutParams);
-            view.findViewById(R.id.statusBar).setBackgroundColor(topStatusColor);
-            getLayoutParams().height = getMeasuredHeight() + statusbarHeight;
-            requestFocus();
-        } else {
-            statusView.setVisibility(GONE);
+        if (!isMeasure){
+            if (isCoverStatus) {
+                ViewGroup.LayoutParams layoutParams = statusView.getLayoutParams();
+                int statusbarHeight = QMUIStatusBarHelper.getStatusbarHeight(mContext);
+                layoutParams.height = statusbarHeight;
+                statusView.setLayoutParams(layoutParams);
+                view.findViewById(R.id.statusBar).setBackgroundColor(topStatusColor);
+                getLayoutParams().height = getMeasuredHeight() + statusbarHeight;
+                requestFocus();
+            } else {
+                statusView.setVisibility(GONE);
+            }
+            isMeasure = true;
         }
+
     }
 
     public TextView getTitle() {
         return title;
+    }
+
+    public void setTitleTxt(String titleTxt) {
+        this.titleTxt = titleTxt;
+        title.setText(titleTxt);
     }
 
     public void addMenu() {
@@ -227,8 +235,6 @@ public class NavigaView extends FrameLayout {
 
     public interface OnApplyNaviListener {
         void onBackLayoutClick();
-
-        void onApplyTitle(TextView title);
 
         void onRightLayoutClick();
     }

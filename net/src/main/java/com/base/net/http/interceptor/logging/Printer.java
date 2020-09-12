@@ -151,6 +151,9 @@ class Printer {
     }
 
     private static String slashSegments(List<String> segments) {
+        if (segments==null){
+            return "";
+        }
         StringBuilder segmentString = new StringBuilder();
         for (String segment : segments) {
             segmentString.append("/").append(segment);

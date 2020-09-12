@@ -2,25 +2,27 @@ apply plugin: 'com.android.library'
 
 apply plugin: 'maven'
 
-//uploadArchives {
-//    repositories.mavenDeployer {
-//        repository(url: "http://nexus.tttinner.com:8888/nexus/content/repositories/releases/") {
-//            authentication(
-//                    userName: "yuangang.wang",
-//                    password: "Abu0ln9vrD91e0m"
-//            )
-//        }
-//
-//        pom.groupId = "com.app.base"
-//        pom.artifactId = "net"
-//        pom.version = "1.0.0"
-//
-//    }
-//}
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: "http://nexus.tttinner.com:8888/nexus/content/repositories/releases/") {
+            authentication(
+                    userName: "yuangang.wang",
+                    password: "Abu0ln9vrD91e0m"
+            )
+        }
+
+        pom.groupId = "com.app.base"
+        pom.artifactId = "net"
+        pom.version = "1.0.9"
+
+    }
+}
 
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
+
+    publishNonDefault true
 
     defaultConfig {
         minSdkVersion 16
@@ -41,4 +43,8 @@ dependencies {
     api 'com.squareup.retrofit2:converter-gson:2.4.0'
     api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
     implementation 'androidx.annotation:annotation:1.1.0'
+
+    api 'com.trello.rxlifecycle3:rxlifecycle:3.0.0'
+    api 'com.trello.rxlifecycle3:rxlifecycle-android:3.0.0'
+    api 'com.trello.rxlifecycle3:rxlifecycle-components:3.0.0'
 }

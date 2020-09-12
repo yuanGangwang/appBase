@@ -1,18 +1,10 @@
 package com.base.net.client;
 
 
-import android.net.ParseException;
-
+import com.base.net.exception.IExceptionHandle;
 import com.base.net.http.BaseResponse;
-import com.base.net.http.ExceptionHandle;
-import com.base.net.http.ResponseThrowable;
-import com.google.gson.JsonParseException;
-import com.google.gson.stream.MalformedJsonException;
+import com.base.net.exception.ExceptionHandle;
 
-import org.apache.http.conn.ConnectTimeoutException;
-import org.json.JSONException;
-
-import java.net.ConnectException;
 import java.util.concurrent.Callable;
 
 import io.reactivex.Observable;
@@ -22,10 +14,9 @@ import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.HttpException;
 
 public class RxUtils {
-    public static <T> Single<T> wrapRestCall(final Observable<BaseResponse<T>> call) {
+    public static <T> Single<T> wrapRestCall(final Observable<BaseResponse<T>> call, final IExceptionHandle exceptionHandle) {
         return call.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(new ObservableTransformer<BaseResponse<T>, BaseResponse<T>>() {
@@ -34,7 +25,13 @@ public class RxUtils {
                         return upstream.onErrorResumeNext(new Function<Throwable, ObservableSource<? extends BaseResponse<T>>>() {
                             @Override
                             public ObservableSource<? extends BaseResponse<T>> apply(Throwable throwable) throws Exception {
-                                return Observable.error(ExceptionHandle.handleException(throwable));
+                                IExceptionHandle handle;
+                                if (exceptionHandle==null){
+                                    handle = new ExceptionHandle();
+                                }else {
+                                    handle = exceptionHandle;
+                                }
+                                return Observable.error(handle.handleException(throwable));
                             }
                         });
                     }
@@ -43,9 +40,12 @@ public class RxUtils {
                     @Override
                     public ObservableSource<? extends T> apply(BaseResponse<T> tBaseResponse) throws Exception {
                         if (tBaseResponse.isOk()) {
-                            return Observable.just(tBaseResponse.getRetData());
+                            if (tBaseResponse.getData() == null){
+                                tBaseResponse.setData((T) new String("success"));
+                            }
+                            return Observable.just(tBaseResponse.getData());
                         } else {
-                            return Observable.error(new Exception(tBaseResponse.getRetMsg()));
+                            return Observable.error(new Exception(tBaseResponse.getMsg()));
                         }
                     }
                 }, new Function<Throwable, ObservableSource<? extends T>>() {

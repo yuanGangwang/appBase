@@ -1,4 +1,4 @@
-package com.base.net.http;
+package com.base.net.exception;
 
 import androidx.annotation.Nullable;
 

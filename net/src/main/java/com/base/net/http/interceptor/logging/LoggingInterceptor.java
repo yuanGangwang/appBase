@@ -3,6 +3,7 @@ package com.base.net.http.interceptor.logging;
 import android.text.TextUtils;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -74,7 +75,10 @@ public class LoggingInterceptor implements Interceptor {
         long st = System.nanoTime();
         Response response = chain.proceed(request);
 
-        List<String> segmentList = ((Request) request.tag()).url().encodedPathSegments();
+        List<String> segmentList = new ArrayList<>();
+        if (request.tag() != null) {
+            segmentList = ((Request) request.tag()).url().encodedPathSegments();
+        }
         long chainMs = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - st);
         String header = response.headers().toString();
         int code = response.code();
@@ -128,6 +132,16 @@ public class LoggingInterceptor implements Interceptor {
             return level;
         }
 
+        /**
+         * @param level set log level
+         * @return Builder
+         * @see Level
+         */
+        public Builder setLevel(Level level) {
+            this.level = level;
+            return this;
+        }
+
         Headers getHeaders() {
             return builder.build();
         }
@@ -152,16 +166,6 @@ public class LoggingInterceptor implements Interceptor {
          */
         public Builder addHeader(String name, String value) {
             builder.set(name, value);
-            return this;
-        }
-
-        /**
-         * @param level set log level
-         * @return Builder
-         * @see Level
-         */
-        public Builder setLevel(Level level) {
-            this.level = level;
             return this;
         }
 
