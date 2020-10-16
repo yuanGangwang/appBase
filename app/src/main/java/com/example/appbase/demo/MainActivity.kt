@@ -4,16 +4,26 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toast
+import androidx.lifecycle.Lifecycle
+import com.base.net.client.OkHttpFactory
 import com.base.net.client.RetrofitClient
 import com.base.net.client.RxUtils
+import com.base.net.http.interceptor.BaseInterceptor
 import com.example.appbase.R
+import com.trello.rxlifecycle3.android.ActivityEvent
+import com.trello.rxlifecycle3.components.RxActivity
 import dev.common.utils.SPUtil
+import dev.common.utils.ToastUtil
 import dev.common.weight.setting.SettingItem
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.concurrent.TimeUnit
 
-class MainActivity : AppCompatActivity() {
+
+class MainActivity : RxActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +44,6 @@ class MainActivity : AppCompatActivity() {
 
         setting.setOnClickListener {
             startActivity(Intent(this, SettingActivity::class.java))
-            start()
         }
 
         navi.setOnClickListener {
@@ -51,6 +60,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, SearchActivity::class.java))
         }
 
+        request.setOnClickListener {
+            request()
+        }
     }
 
 
@@ -67,17 +79,29 @@ class MainActivity : AppCompatActivity() {
         Log.i("dialog", message)
     }
 
-    private fun start() {
-
-      RetrofitClient.getInstance("http://121.43.186.223:8300", this).initRetrofit()
-
-        RxUtils.wrapRestCall(RetrofitClient.create(ApiService::class.java).sendOlderPhoneAddress)
-            .subscribe(Consumer<String> {
-                Log.e("As", "success")
-            }, Consumer {
-                Log.e("As", it.message)
-            })
+    override fun onStart() {
+        super.onStart()
     }
 
+    fun request() {
+//        Toast.makeText(this, "啊"+i, Toast.LENGTH_SHORT).show()
+
+//        var okHttpClient = OkHttpFactory.OkHttpFactoryBuilder().withContent(this)
+//            .withDebug(true)
+//            .withInterceptor(BaseInterceptor(null))
+//            .withIsOpenHttps(false)
+//            .withTimeOut(20).build().okHttpClient
+//
+//        var apiService =
+//            RetrofitClient.getInstance().init("http://121.43.186.223:8300/", okHttpClient)
+//                .createApiServer(ApiService::class.java)
+//
+//        RxUtils.wrapRestCall(apiService.homeMoreItem,null)
+//            .subscribe(Consumer {
+//                Log.i("As", "request: ")
+//            }, Consumer {
+//                Log.e("As", "Erro"+it.message)
+//            })
+    }
 
 }

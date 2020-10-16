@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".demo.MainActivity">
 
@@ -45,4 +46,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="search" />
+
+    <Button
+        android:id="@+id/request"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="request" />
+
+    <dev.common.weight.CircleImageView
+        android:id="@+id/avaImg"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="16dp"
+        app:civ_border_color="@color/colorWhite"
+        app:civ_border_width="2dp" />
 </LinearLayout>

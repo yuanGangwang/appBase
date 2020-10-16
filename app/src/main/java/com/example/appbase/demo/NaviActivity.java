@@ -25,10 +25,6 @@ public class NaviActivity extends AppCompatActivity {
                 finish();
             }
 
-            @Override
-            public void onApplyTitle(TextView title) {
-
-            }
 
             @Override
             public void onRightLayoutClick() {
@@ -36,20 +32,10 @@ public class NaviActivity extends AppCompatActivity {
             }
         });
 
-
-        ((NavigaView) findViewById(R.id.iconBar)).setOnSearchClickListener(new NavigaView.OnSearchClickListener() {
-            @Override
-            public void searchClick() {
-                ToastUtil.getInstance(NaviActivity.this).showCommon("1111");
-            }
-        });
-        ((NavigaView) findViewById(R.id.iconBar)).setOnMenuClickListener(new NavigaView.OnMenuClickListener() {
-            @Override
-            public void menuClick() {
-                ToastUtil.getInstance(NaviActivity.this).showCommon("2222");
-            }
-        });
+        ((NavigaView) findViewById(R.id.iconBar)).setOnSearchClickListener(() -> ToastUtil.getInstance(NaviActivity.this).showCommon("1111"+(i++)));
+        ((NavigaView) findViewById(R.id.iconBar)).setOnMenuClickListener(() -> ToastUtil.getInstance(NaviActivity.this).showCommon("2222"));
 
 
     }
+    int i = 0;
 }
