@@ -201,3 +201,87 @@ android:layout_height="44dp" />
 
 1.0.3 修复在xml中使用自定义控件时候无法提示自定义属性问题(类名要与属性空间名相同)
 新增右侧文字选项
+
+
+
+### 网络请求封装目的
++ 统一网络请求操作，便于后续接入使用
+
+
+### 接入
++ 将aar项目包放入module的libs文件夹
++ 在module的dependencies内增加
+>implementation(name: 'net-1.0.0', ext: 'aar')
+
+
+### **使用方式**
++ 初始化：  NetClient.getInstance().appKey(appkey);（此处appKey即为申请的app key）
++ 请求：
+  
+  JSON形式参数请求
+  ```java
+  NetClient.getInstance()
+            .url(url)
+            .jsonParams(jsonObject.toString())
+            .headerMap(params)
+            .callback(object : CallBackUtil() {
+                override fun onFailure(throwable: Throwable?) {
+                    addMsg("获取凭证失败" + throwable?.message)
+                }
+
+                override fun onResponse(response: com.google.gson.JsonObject?) {
+                    addMsg("获取凭证成功" + response?.get("data")?.asString)
+                    getToken(response?.get("data")?.asString)
+                }
+            })
+            .post()
+  ```
+  Key-Value形式参数请求
+  ```java
+   NetClient.getInstance()
+            .url(url2)
+            .paramsMap(params)
+            .headerMap(HeaderManager.makeHeader())
+            .callback(object : CallBackUtil() {
+                override fun onFailure(throwable: Throwable?) {
+                    addMsg("获取用户授权码失败" + throwable?.message)
+                }
+
+                override fun onResponse(response: com.google.gson.JsonObject?) {
+                    addMsg("获取用户授权码成功")
+                    getUserInfo(Gson().fromJson(response, Token::class.java))
+                }
+            })
+            .post()
+  ```
+  GET请求方式
+  ```java
+  NetClient.getInstance().url(Constants.getSPhoneArea)
+                .headerMap(HeaderManager.makeHeader())
+                .callback(new CallBackUtil() {
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        ToastUtil.getInstance(AreaSearchActivity.this).showCommon(throwable.getMessage());
+                    }
+
+                    @Override
+                    public void onResponse(JsonObject response) {
+                        areaResponse = new Gson().fromJson(response, AreaResponse.class);
+                        generateTag(areaResponse.getData());
+                    }
+
+                })
+                .get();
+  ```
+
+### 请求地址动态配置：
+ + 现请求地址请统一配置在Constants类中；
+ + 需要在项目根目录下的gradle.properties文件中指定
+```gradle
+DEBUG_BASE_URL=http://47.110.12.104:9000 //1
+BASE_URL=http://api-gateway.globalneutron.com //2
+```
+1处极为debug环境下连接地址，2处为正式环境下连接地址
+
+
+
